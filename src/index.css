@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html {
-  background-color: #121212; /* Fondo oscuro predeterminado */
-  color: #f7fafc; /* Texto claro */
+  background-color: #121212; 
+  color: #f7fafc; 
 }
+
