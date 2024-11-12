@@ -9,13 +9,13 @@
 }
 
 .movie-item {
-    border: 1px solid #ccc;
+    border: 1px solid #25254b;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
     padding: 12px; /* Un poco más de espacio */
-    background-color: #f8f8f8;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #25254b;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 .movie-item img {
@@ -29,7 +29,7 @@
 .movie-title {
     font-size: 16px; /* Aumenta ligeramente el tamaño del texto del título */
     margin-top: 5px;
-    color: #333;
+    color: #fff;
 }
 
 .pagination {
@@ -44,12 +44,17 @@
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #25254b;
     color: white;
     cursor: pointer;
 }
 
 .pagination button:disabled {
-    background-color: #ccc;
+    background-color: #1f1e1e;
     cursor: not-allowed;
 }
+
+
+
+
+
