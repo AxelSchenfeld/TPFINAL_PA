@@ -1,5 +1,4 @@
-// src/utils/getData.js
-import { headers, apiKey } from '../components/headers.jsx'; // Asegúrate de que la ruta sea correcta
+import { headers, apiKey } from '../components/headers.jsx';  // Asegúrate de que la ruta sea correcta
 
 const getData = async (url, query = "") => {
     const options = {
@@ -13,7 +12,7 @@ const getData = async (url, query = "") => {
         : `${url}&api_key=${apiKey}`;
 
     try {
-        console.log("Fetching URL: ", apiUrl); // Esto te ayudará a depurar
+        console.log("Fetching URL: ", apiUrl);  // Esto te ayudará a depurar
         const response = await fetch(apiUrl, options);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -22,8 +21,9 @@ const getData = async (url, query = "") => {
         return data;
     } catch (error) {
         console.log("Fetch error: ", error);
-        return { results: [], total_pages: 1 }; // Retornar un objeto vacío en caso de error
+        return { results: [], total_pages: 1 };  // Retornar un objeto vacío en caso de error
     }
 };
 
-export default getData;
+export default getData;  // Exportar como default
+
