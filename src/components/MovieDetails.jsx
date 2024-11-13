@@ -33,7 +33,7 @@ const MovieDetails = () => {
             <h1 className="movie-title">{movie.title}</h1>
             <div className="movie-poster-container">
                 <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                     alt={movie.title}
                     className="movie-poster"
                 />
