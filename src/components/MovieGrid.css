@@ -87,6 +87,12 @@
     padding: 12px;
     background-color: #25254b;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+.movie-item:hover {
+    transform: scale(1.05); /* Agrandar ligeramente */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* Sombra más fuerte */
 }
 
 /* Estilo de la imagen de la película */
@@ -104,6 +110,7 @@
     margin-top: 5px;
     color: #fff;
 }
+
 
 /* Estilo de la paginación */
 .pagination {
@@ -127,3 +134,5 @@
     background-color: #1f1e1e;
     cursor: not-allowed;
 }
+
+/* Estilo de los elementos individuales de la grilla */

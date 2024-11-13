@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import getData from '../utils/getData';
-import './MovieGrid.css';
+import './MovieGrid.css'; // Asegúrate de importar el archivo CSS
 
 const MovieGrid = () => {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [query, setQuery] = useState('');
     const [totalPages, setTotalPages] = useState(1);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -29,6 +31,10 @@ const MovieGrid = () => {
         setQuery(e.target.search.value);
     };
 
+    const handleMovieClick = (id) => {
+        navigate(`/movie/${id}`);
+    };
+
     return (
         <div>
             <h1 className="page-title">PELÍCULAS POPULARES</h1>
@@ -43,7 +49,11 @@ const MovieGrid = () => {
             </form>
             <div className="movie-grid">
                 {movies.map(movie => (
-                    <div key={movie.id} className="movie-item">
+                    <div
+                        key={movie.id}
+                        className="movie-item"
+                        onClick={() => handleMovieClick(movie.id)}
+                    >
                         <img 
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
                             alt={movie.title} 
@@ -73,4 +83,3 @@ const MovieGrid = () => {
 };
 
 export default MovieGrid;
-
