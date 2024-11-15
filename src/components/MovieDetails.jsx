@@ -4,10 +4,11 @@ import getData from '../utils/getData';
 import getMovieTrailers from '../utils/getMovieTrailers';
 import './MovieDetails.css';
 
+// Componente que muestra el detalle de una pelicula
 const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
-    const [trailer, setTrailer] = useState(null);  // Usamos 'trailer' en lugar de 'trailers'
+    const [trailer, setTrailer] = useState(null);  
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -20,7 +21,7 @@ const MovieDetails = () => {
         const fetchTrailers = async () => {
             const trailerData = await getMovieTrailers(id);
             if (trailerData.length > 0) {
-                setTrailer(trailerData[0]);  // Tomamos solo el primer trailer
+                setTrailer(trailerData[0]);  
             }
         };
         fetchTrailers();
@@ -51,7 +52,6 @@ const MovieDetails = () => {
                     </div>
                 </div>
 
-                {/* Sección para los trailers */}
                 <div className="trailers-section">
                     {trailer ? (
                         <div className="trailer-container">

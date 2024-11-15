@@ -1,3 +1,22 @@
+@keyframes colorCycleDarkModeAdjust {
+    0% {
+        color: #8b9ec4;  /* Un tono claro que contraste bien con el fondo oscuro */
+    }
+    25% {
+        color: #f1a7c3;  /* Un color suave pero cálido */
+    }
+    50% {
+        color: #a1c4c8;  /* Un tono frío, en la gama del azul-verde */
+    }
+    75% {
+        color: #f0e084;  /* Un amarillo suave, no tan brillante */
+    }
+    100% {
+        color: #8b9ec4;  /* Regresa al color inicial */
+    }
+}
+
+ 
 .movie-details {
     max-width: 1000px;
     margin: 30px auto;
@@ -16,6 +35,7 @@
     font-weight: 700;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
+    animation: colorCycleDarkModeAdjust 8s infinite;
 }
 
 .movie-details img {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getData from '../utils/getData';
-import './MovieGrid.css'; // Asegúrate de importar el archivo CSS
+import './MovieGrid.css'; 
 
+// Componente que muestra la cuadrícula de películas
 const MovieGrid = () => {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -10,27 +11,34 @@ const MovieGrid = () => {
     const [totalPages, setTotalPages] = useState(1);
     const navigate = useNavigate();
 
+    // Hook para obtener las películas cada vez que cambian 'query' o 'currentPage'
     useEffect(() => {
         const fetchMovies = async () => {
+
+            // Determinamos la URL según si hay un término de búsqueda o no
             const url = query 
-                ? `https://api.themoviedb.org/3/search/movie?query=${query}`
+                ? `https://api.themoviedb.org/3/search/movie?query=${query}` 
                 : `https://api.themoviedb.org/3/movie/popular?`;
-            const data = await getData(`${url}&page=${currentPage}`);
+
+            // Llamamos a la API utilizando la función 'getData'
+                const data = await getData(`${url}&page=${currentPage}`);
             
             if (data) {
                 setMovies(data.results);
-                setTotalPages(data.total_pages);
+                setTotalPages(5);
             }
         };
         fetchMovies();
     }, [query, currentPage]);
 
+    // Manejo de búsqueda
     const handleSearch = (e) => {
         e.preventDefault();
-        setCurrentPage(1);
+        setCurrentPage(1); 
         setQuery(e.target.search.value);
     };
-
+    
+    // Manejo del clic en una película
     const handleMovieClick = (id) => {
         navigate(`/movie/${id}`);
     };
@@ -38,6 +46,8 @@ const MovieGrid = () => {
     return (
         <div>
             <h1 className="page-title">PELÍCULAS POPULARES</h1>
+            
+            {/* Formulario para la búsqueda */}
             <form onSubmit={handleSearch} className="search-container">
                 <input
                     type="text"
@@ -47,6 +57,8 @@ const MovieGrid = () => {
                 />
                 <button type="submit" className="search-button">Buscar</button>
             </form>
+            
+            {/* Grid para mostrar las películas */}
             <div className="movie-grid">
                 {movies.map(movie => (
                     <div
@@ -56,13 +68,14 @@ const MovieGrid = () => {
                     >
                         <img 
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                            alt={movie.title} 
                             className="movie-poster"
                         />
                         <h3 className="movie-title">{movie.title}</h3>
                     </div>
                 ))}
             </div>
+            
+            {/* Paginación */}
             <div className="pagination">
                 <button 
                     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
